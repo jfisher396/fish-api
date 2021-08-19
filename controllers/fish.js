@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const fishRoutes = require('./fish');
 
 router.get('/', (req,res) => {
-    res.send('here fishy fishy');
+    res.send('fish api routes here');
 })
-
-router.use('/api/fish', fishRoutes);
 
 module.exports = router;
