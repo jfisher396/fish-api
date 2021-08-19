@@ -6,7 +6,7 @@ const db = require('../models');
 
 // Route to get all fish in DB
 router.get('/', (req,res) => {
-    db.Fish.findAll().then(fishes => {
+    db.Fish.findAll().then((fishes) => {
         res.json(fishes)
     }).catch(err => {
         console.log(err);
