@@ -6,6 +6,6 @@ router.get('/', (req,res) => {
     res.send('here fishy fishy');
 })
 
-router.use('/api/fish', fishRoutes);
+router.use('/api/fishes', fishRoutes);
 
 module.exports = router;
