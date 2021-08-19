@@ -26,6 +26,20 @@ router.post('/', (req,res) => {
         console.log(err);
         res.status(500).end()
     })
+});
+
+// Route to delete fish
+router.delete('/:id', (req,res) => {
+    db.Fish.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then((deletedFish) => {
+        res.json(deletedFish)
+    }).catch(err => {
+        console.log(err);
+        res.status(500).end()
+    })
 })
 
 module.exports = router;
