@@ -19,9 +19,9 @@ router.get("/", (req, res) => {
 // Route to add a fish
 router.post("/", (req, res) => {
   db.Fish.create({
-    name: req.body.name,
     width: req.body.width,
-    color: req.body.color,
+    color1: req.body.color1,
+    color2: req.body.color2
   })
     .then((newFish) => {
       res.json(newFish);
