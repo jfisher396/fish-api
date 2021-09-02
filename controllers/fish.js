@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
   db.Fish.create({
     width: req.body.width,
     color1: req.body.color1,
-    color2: req.body.color2
+    color2: req.body.color2,
   })
     .then((newFish) => {
       res.json(newFish);
