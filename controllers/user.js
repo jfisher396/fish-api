@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 
 // All routes start with /api/users
 
+// route to create a new user
 router.post("/signup", (req, res) => {
   db.User.create({
     name: req.body.name,
@@ -20,6 +21,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
+// route to login as a user
 router.post("/login", (req, res) => {
   db.User.findOne({
     where: {
