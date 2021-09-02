@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
 
-router.get("/signup", (req, res) => {
+router.post("/signup", (req, res) => {
   db.User.create({
     name: req.body.name,
     password: req.body.password,
