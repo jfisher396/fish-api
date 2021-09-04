@@ -33,6 +33,11 @@ router.post("/login", (req, res) => {
         res.status(404).send("No user found with that email");
       } else {
         if (bcrypt.compareSync(req.body.password, user.password)) {
+          req.session.user = {
+            name: user.name,
+            email: user.email,
+            id: user.id,
+          };
           res.send(`You are logged in under ${user.email}`);
         } else {
           res.status(401).send("Incorrect password");
@@ -43,6 +48,11 @@ router.post("/login", (req, res) => {
       console.log(err);
       res.status(500).end();
     });
+});
+
+// route to get user information
+router.get("/readsessions", (req, res) => {
+  res.json(req.session);
 });
 
 module.exports = router;

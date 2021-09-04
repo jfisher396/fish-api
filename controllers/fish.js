@@ -18,18 +18,22 @@ router.get("/", (req, res) => {
 
 // Route to add a fish
 router.post("/", (req, res) => {
-  db.Fish.create({
-    width: req.body.width,
-    color1: req.body.color1,
-    color2: req.body.color2,
-  })
-    .then((newFish) => {
-      res.json(newFish);
+  if (!req.session.user) {
+    res.status(401).send("Login required");
+  } else {
+    db.Fish.create({
+      width: req.body.width,
+      color1: req.body.color1,
+      color2: req.body.color2,
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).end();
-    });
+      .then((newFish) => {
+        res.json(newFish);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).end();
+      });
+  }
 });
 
 // Route to delete fish
